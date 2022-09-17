@@ -1,0 +1,79 @@
+<LoginScreen>:
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 1
+            Label:
+                text: "Login Page"
+            TextInput:
+                id: worker_id
+                hint_text: "Enter Employee/Admin Id"
+            TextInput:
+                id: worker_pass
+                hint_text: "Enter Password"
+        GridLayout:
+            cols: 2
+            Button:
+                text: "Login as Employee"
+                on_press: root.welcome_employee(root.ids.worker_id, root.ids.worker_pass)
+            Button:
+                text: "Login as Admin"
+                on_press: root.welcome_admin(root.ids.worker_id, root.ids.worker_pass)
+
+<WelcomeEmployee>:
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 1
+            Label:
+                text: "Login Successful"
+        GridLayout:
+            cols: 2
+            Button:
+                text: "Time In"
+            Button:
+                text: "Time Out"
+        GridLayout:
+            cols: 1
+            Button:
+                text: "View Employee Performance"
+            Button:
+                text: "View Employee Data"
+            Button:
+                text: "Go Back to Log-in page"
+
+<WelcomeAdmin>:
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 2
+            GridLayout:
+                cols: 1
+                Button:
+                    text: "Add Employee"
+                Button:
+                    text: "Remove Employee"
+                Button:
+                    text: "Add Another Admin"
+            GridLayout:
+                cols: 1
+                Button:
+                    text: "View Employee Performance"
+                Button:
+                    text: "View Employee Data"
+                Button:
+                    text: "View All Admins"
+        GridLayout:
+            cols: 1
+            Button:
+                text: "Go back to Log-in Page"
+
+<RootWidget>:
+    LoginScreen:
+        name: "login_screen"
+    WelcomeEmployee:
+        name: "welcome_employee"
+    WelcomeAdmin:
+        name: "welcome_admin"
+
+

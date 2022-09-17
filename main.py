@@ -1,16 +1,32 @@
-from tkinter import *
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager, Screen
 
-window = Tk()
+Builder.load_file('design.kv')
 
-l1 = Label(window, text="Login Page")
-l1.grid(row=0, column=0)
+class LoginScreen(Screen):
+    def welcome_employee(self, worker_id, worker_pass):
+        if worker_id.text == "jovie" and worker_pass.text == "123":
+            self.manager.current = "welcome_employee"
+            print(worker_id.text, worker_pass.text)
 
-e1 = Entry(window)
-e1.grid(row=1, column=0)
+    def welcome_admin(self, worker_id, worker_pass):
+        if worker_id.text == "jovie" and worker_pass.text == "123":
+            self.manager.current = "welcome_admin"
+            print(worker_id.text, worker_pass.text)
 
-b1 = Button(window, text="Login as Employee")
-b1.grid(row=2, column=0)
+class RootWidget(ScreenManager):
+    pass
 
-b2 = Button(window, text="Login as Employee")
-b2.grid(row=3, column=0)
-window.mainloop()
+class WelcomeEmployee(Screen):
+    pass
+
+class WelcomeAdmin(Screen):
+    pass
+
+class MainApp(App):
+    def build(self):
+        return RootWidget()
+
+if __name__ == "__main__":
+    MainApp().run()
