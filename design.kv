@@ -41,6 +41,7 @@
                 text: "View Employee Data"
             Button:
                 text: "Go Back to Log-in page"
+                on_press: root.login_screen()
 
 <WelcomeAdmin>:
     GridLayout:
@@ -51,6 +52,7 @@
                 cols: 1
                 Button:
                     text: "Add Employee"
+                    on_press: root.add_employee()
                 Button:
                     text: "Remove Employee"
                 Button:
@@ -68,6 +70,34 @@
             Button:
                 text: "Go back to Log-in Page"
 
+<AddEmployee>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Enter Employee Credentials"
+        TextInput:
+            id: employee_name
+            hint_text: "Enter Employee Name"
+        TextInput:
+            id: employee_pass
+            hint_text: "Enter Password"
+        Button:
+            text: "Add Employee"
+            on_press: root.employee_add_success(root.ids.employee_name, root.ids.employee_pass)
+
+<EmployeeAddSuccess>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Employee Added!"
+        Button:
+            text: "Go Back to Admin Page"
+            on_press: root.welcome_admin()
+        Button:
+            text: "Go Back to Log-in Page"
+            on_press: root.login_screen()
+
+
 <RootWidget>:
     LoginScreen:
         name: "login_screen"
@@ -75,5 +105,9 @@
         name: "welcome_employee"
     WelcomeAdmin:
         name: "welcome_admin"
+    AddEmployee:
+        name: "add_employee"
+    EmployeeAddSuccess:
+        name: "employee_add_success"
 
 
